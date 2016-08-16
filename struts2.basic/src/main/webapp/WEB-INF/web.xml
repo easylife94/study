@@ -7,7 +7,7 @@
   <!-- 定义struts2的拦截器 -->
   <filter>
     <filter-name>struts2</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
   <!-- 定义拦截器拦截的请求，这里配置成拦截所有请求 -->
   <filter-mapping>
