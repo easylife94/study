@@ -3,11 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>struts2 basic web app</display-name>
+ 
   <!-- 定义struts2的拦截器 -->
   <filter>
     <filter-name>struts2</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+    <!-- 此处用来配置struts.xml的位置-->
+    <init-param>
+      <param-name>config</param-name>
+      <!-- 根目录从classpath开始，可设置多个选项使用逗号隔开。一下配置不是固定请多动手尝试。 -->
+      <param-value>struts-default.xml,struts-plugin.xml,struts.xml</param-value>
+    </init-param>
   </filter>
   <!-- 定义拦截器拦截的请求，这里配置成拦截所有请求 -->
   <filter-mapping>
