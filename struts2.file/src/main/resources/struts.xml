@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+
+	<!-- 常量设置 -->
+	<!-- 设置上传文件临时目录  -->
+	<constant name="" value=""></constant>
+	<!-- 设置上传文件最大值 ，默认为2M（2097152）-->
+	<constant name="struts.multipart.maxSize" value="2097152"/>
+	 <!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+    <constant name="struts.multipart.saveDir " value="d:/tmp" />
+	
+	
+	<!-- 包配置 -->
+    <package name="default" namespace="/" extends="struts-default">
+    	<action name="index">
+    		<result>/index.jsp</result>
+    	</action>
+    </package>
+    <package name="file" namespace="/file" extends="struts-default">  
+        <action name="upload" class="struts2.file.action.FileAction" method="uploadFile">  
+            <result name="success">/success.jsp</result>
+            <result name="page">/fileUpload.jsp</result>  
+            <interceptor-ref name="fileUpload"/>
+            <interceptor-ref name="defaultStack" />
+        </action>  
+    </package>  
+
+</struts>
