@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+    <package name="test" namespace="/" extends="struts-default">  
+        <action name="index">  
+            <result name="success">/index.jsp</result>  
+        </action>  
+    </package>
+    <!-- 定义为abstract的package中的action无法访问 -->
+    <package name="all" abstract="true" namespace="/all" extends="struts-default">        
+    	    <action name="index">  
+            <result name="success">/index.jsp</result>  
+        </action> 
+    </package>
+    
+    
+    <package name="user" namespace="/user" extends="struts-default">
+    	  <action name="login"  class="struts2.basic.action.UserAction" method="login">
+    	    <!-- action返回的结果应能在result中找到，根据不同的result返回不同的视图  -->
+    	    <result name="page">/user/login.jsp</result>
+    	    <result name="success">/user/profile.jsp</result>
+    	  </action>
+    </package>   
+
+</struts>
