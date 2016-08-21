@@ -19,7 +19,7 @@
     
     <package name="user" namespace="/user" extends="struts-default">
     	  <action name="login"  class="struts2.basic.action.UserAction" method="login">
-    	    <!-- action返回的结果应能在result中找到，根据不同的result返回不同的视图  -->
+    	    <!-- result定义了action的返回结果和视图的映射  -->
     	    <result name="page">/user/login.jsp</result>
     	    <result name="success">/user/profile.jsp</result>
     	  </action>
