@@ -14,3 +14,15 @@ struts2.basic/.settings/org.eclipse.wst.common.project.facet.core.xml
 struts2.basic/.settings/org.eclipse.wst.jsdt.ui.superType.container
 
 struts2.basic/.settings/org.eclipse.wst.jsdt.ui.superType.name
+
+struts2.action/.classpath
+
+struts2.action/.jsdtscope
+
+struts2.action/.project
+
+struts2.action/.settings/org.eclipse.wst.common.project.facet.core.xml
+
+struts2.action/.settings/org.eclipse.wst.jsdt.ui.superType.container
+
+struts2.action/.settings/org.eclipse.wst.jsdt.ui.superType.name
