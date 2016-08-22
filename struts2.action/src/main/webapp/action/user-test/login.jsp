@@ -3,6 +3,9 @@
 <% String path = request.getContextPath(); %>
 <html>
 <body>
-<h2>欢迎来到首页</h2>
+<h3>欢迎来到 /user/test 命名空间的页面</h3>
+
+
+</ul>
 </body>
 </html>

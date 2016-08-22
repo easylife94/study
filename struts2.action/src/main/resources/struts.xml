@@ -3,10 +3,60 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="my-default" namespace="/" extends="struts-default">
+	<!-- 设置常量 允许使用正斜杠[/] -->
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<!-- 根命名空间 -->
+	<package name="root" namespace="/" extends="struts-default">
 		<action name="index">
-			<result>/index.jsp</result>
+			<result >/index.jsp</result>
 		</action>
 	</package>
+	
+	<!-- 默认命名空间的,在这里没有设置namespace的值 -->
+	<package name="default" extends="struts-default">
+		<action name="index">
+			<result>/action/default-namespace.jsp</result>
+		</action>
+		<action name="login">
+			<result>/action/default-namespace.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 抽象包 -->
+	<package name="all" abstract="true" extends="struts-default"> 
+		<global-results>
+			<result name="my-index">/action/my/index.jsp</result>
+		</global-results>
+	<!-- 抽象包中不能定义action,否则启动会报错  -->
+	<!-- 
+		<action name="all-index">
+			<result >/index.jsp</result>
+		</action>
+		 -->
+	</package>
+	
+	<package name="user" namespace="/user" extends="struts-default">
+	 <!-- 	<action name="login">
+			<result>/action/user/login.jsp</result>
+		</action>  -->
+		<action name="test/login">
+			<result>/action/user/login.jsp</result>
+		</action>
+	</package>
+	
+
+	<package name="user/test" namespace="/user/test" extends="struts-default">
+		<action name="login">
+			<result>/action/user-test/login.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 同时继承 user 和all 包 -->
+	<package name="multi-extends" namespace="/extends" extends="user,all">
+		<action name="index" class="struts2.action.action.ExtendsAction">
+			<!-- 使用all包中定义的 全局result my-index-->
+		</action>
+	</package>
+	
 
 </struts>

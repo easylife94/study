@@ -3,6 +3,6 @@
 <% String path = request.getContextPath(); %>
 <html>
 <body>
-<h2>欢迎来到首页</h2>
+<h2>欢迎来到my-index</h2>
 </body>
 </html>
