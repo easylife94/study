@@ -5,6 +5,9 @@
 <struts>
 	<!-- 设置常量 允许使用正斜杠[/] -->
 	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<!-- 开启动态方法调用 -->
+	<!-- <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant> -->
+	
 	<!-- 根命名空间 -->
 	<package name="root" namespace="/" extends="struts-default">
 		<action name="index">
@@ -58,5 +61,76 @@
 		</action>
 	</package>
 	
-
+	<!-- action 课程部分的配置 -->
+	<package name="article"  namespace="/article" extends="struts-default">
+	  <!-- name无法支持中文 -->
+	<!-- 
+	  <action name="struts2详细配置" >
+		  <result >/article/my-article.jsp</result>
+	  </action>
+	  -->
+	 <!-- action  支持符号[/][.][-] -->
+	 <!-- [/]的支持需要额外设置常量struts.enable.SlashesInActionNames为true -->
+	 <action name="article/test">
+	 	<result >/article/my-article.jsp</result>
+	 </action>
+	 <!-- 
+	 	[.]需要注意为了不是的符号的字符串被识别为请求的后缀而被丢弃，
+	 	需要在每个请求后显示设置请求后缀，比如.action
+	  -->
+	 <action name="article.test">
+	 	<result >/article/my-article.jsp</result>
+	 </action>
+	 <action name="article-test">
+	 	<result >/article/my-article.jsp</result>
+	 </action>
+	 
+	 <!--  action包含该空格的name-->
+	<!--  
+	  <action name="article test">
+	 	<result >/article/my-article.jsp</result>
+	 </action>
+	  -->
+	</package>
+	
+	<!-- class的配置 -->
+	<package name="class" namespace="/class" extends="struts-default">
+	    <!-- 为action指定逻辑处理的Action类 -->
+		<action name="controller-default" class="struts2.action.action.ControllerAction">
+			<result>/class/my-class.jsp</result>
+		</action>
+	</package>
+	<!-- method的配置 -->
+	<package name="method" namespace="/method" extends="struts-default">
+		<!-- method缺省值为 execute -->
+		<action name="default-method" class="struts2.action.action.MethodAction">
+			<result>/method/my-method.jsp</result>
+		</action>
+		<!-- 可以在action请求的最后使用!指定逻辑执行的方法 -->
+		<action name="dynamic-method" class="struts2.action.action.MethodAction">
+			<result >/method/dynamic-method.jsp</result>
+		</action>
+		<!-- 验证通配符匹配优先级问题 -->
+		<action name="dynamic-*" class="struts2.action.action.MethodAction">
+				<result >/method/dynamic-method2.jsp</result>
+		</action>
+		<!-- 使用通配符*来动态调用方法 -->
+		<action name="dynamic-method-*" class="struts2.action.action.MethodAction" method="{1}">
+				<result >/method/dynamic-method.jsp</result>
+		</action> 
+	
+	</package>
+	<package name="pages" namespace="/pages" extends="struts-default">
+		<action name="*-page">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+	<package name="default-action" namespace="/default" extends="struts-default">
+		<!-- 设置默认的action -->
+		<default-action-ref name="default"/>
+		<action name="default">
+			<result>/default.jsp</result>
+		</action>
+	</package>
+	
 </struts>

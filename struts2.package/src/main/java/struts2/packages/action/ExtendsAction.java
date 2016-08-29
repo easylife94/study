@@ -1,4 +1,5 @@
-package struts2.action.action;
+package struts2.packages.action;
+
 
 import com.opensymphony.xwork2.ActionSupport;
 
