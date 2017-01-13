@@ -50,3 +50,6 @@ struts2.package/.classpath
 struts2.package/target/m2e-wtp/web-resources/META-INF/maven/com.huihuilove.study/struts2.package/pom.xml
 
 struts2.package/target/classes/struts.xml
+arithmetic/.classpath
+*.project
+arithmetic/target/classes/META-INF/MANIFEST.MF
