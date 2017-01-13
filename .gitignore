@@ -53,3 +53,4 @@ struts2.package/target/classes/struts.xml
 arithmetic/.classpath
 *.project
 arithmetic/target/classes/META-INF/MANIFEST.MF
+arithmetic/target/classes/
